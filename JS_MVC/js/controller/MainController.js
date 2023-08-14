@@ -21,6 +21,6 @@ export default {
     /***
      * 
      */
-    FormView.setup(document.querySelector("from"))
+    FormView.setup(document.querySelector("form"))
   },
 }

@@ -1,5 +1,7 @@
+import SearchModel from "../models/SearchModel.js";
 import FormView from "../views/FormView.js";
 import TabView from "../views/TabViews.js";
+import ResultView from "../views/ResultView.js";
 
 // 디버깅용 태그
 const tag = "[MainController]";
@@ -31,6 +33,11 @@ export default {
        */
       TabView.setup(document.querySelector("#tabs"))
 
+      /***
+       * ResultView 의 화면 SetUp
+       */
+      ResultView.setup(document.querySelector("#search-result"))
+
       this.selectedTab = "추천 검색"
       this.renderView()
     },
@@ -40,9 +47,15 @@ export default {
 
     },
 
+    search(input) {
+      SearchModel.list(input).then(data => {
+        ResultView.render(data)
+      })
+    },
+
     onSubmit(input) {
-      // 검색 결과 화면(ResultView) 처리
-      console.log(tag, "onSubmit()", input)
+      console.log(tag, 'onSubmit()', input)
+      this.search(input)
     },
 
     onResetForm() {

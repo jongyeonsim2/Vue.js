@@ -29,7 +29,7 @@ ResultView.getSearchResultsHtml = function (data) {
   // reduce() : 누산기능의 함수.
   // html : 누산이 완료된 최종 html 문서
   // item : 데이터 한 건
-  data.reduce( (html, item) => {
+  return data.reduce( (html, item) => {
       html += this.getSerarchItemHtml(item)
       return html
     }, "<ul>"

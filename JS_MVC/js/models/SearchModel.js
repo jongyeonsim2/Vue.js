@@ -1,19 +1,21 @@
 
 const data = [
   {
-    id : 1,
-    name : "비건 샐러드",
-    image : "../img/2.avif",
+    id: 1,
+    name: "비건 샐러드",
+    image:
+      "../img/2.avif",
   },
   {
-    id : 2,
-    name : "수제 햄버거",
-    image : "../img/1.avif",
-  }
+    id: 2,
+    name: "수제 햄버거",
+    image:
+      "../img/1.avif",
+  },
 ];
 
 export default {
-  list() {
+  list(query) {
     //비동기 통신이 되도록 구현.
     return new Promise(
       res => {
@@ -21,8 +23,8 @@ export default {
         setTimeout(
           () => {
             res(data)
-          }, 2000
-        )
+          }, 200
+        );
 
       }
     )

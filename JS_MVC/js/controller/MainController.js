@@ -1,4 +1,4 @@
-import FromView from "../views/FormView.js";
+import FormView from "../views/FormView.js";
 
 // 디버깅용 태그
 const tag = "[MainController]";
@@ -13,3 +13,9 @@ const tag = "[MainController]";
  * 각 화면의 요소에 대한 사용자 이벤트에 대한 처리를 해야 함.
  * 
  */
+
+export default {
+  init() {
+    console.log(tag, "init()")
+  },
+}

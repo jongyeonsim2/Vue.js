@@ -1,0 +1,14 @@
+1. JS 기반의 MVC 프로그램 작성
+   MVC 폴더에 각가의 JS 파일을 작성하면서 추가가 됨.
+   JS 파일은 모두 모듈화해서 사용 => 재사용이 됨.
+   M(model) : 통신 후 결과 데이터를 가지고 있는 JS.
+              향후에는 BackEnd 와 통신하는 부분임.
+   V(view) : View.js( 부모 )
+             FomrView.js
+             TabView.js
+             ResultVies.js
+   C(controller) : MainController.js
+
+   index.html
+   style.css
+   app.js => MainController.js 호출

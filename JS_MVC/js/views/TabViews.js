@@ -52,7 +52,7 @@ TabView.bindClick = function () {
  * 
  */
 TabView.setActiveTab = function (tabName) {
-  Array.from(this.el.querySelectAll("li"))
+  Array.from(this.el.querySelectorAll("li"))
     .forEach(
       li => {
         //CSS 적용

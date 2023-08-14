@@ -31,6 +31,13 @@ export default {
        */
       TabView.setup(document.querySelector("#tabs"))
 
+      this.selectedTab = "추천 검색"
+      this.renderView()
+    },
+
+    renderView() {
+      TabView.setActiveTab(this.selectedTab)
+
     },
 
     onSubmit(input) {

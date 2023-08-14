@@ -22,5 +22,17 @@ export default {
      * 
      */
     FormView.setup(document.querySelector("form"))
+      .on("@submit", e => this.onSubmit(e.detail.input)) // 가독성, 유지보수를 위해서
+      .on("@reset", e => this.onResetForm())// 가독성, 유지보수를 위해서
   },
+
+  onSubmit(input) {
+    // 검색 결과 화면(ResultView) 처리
+    console.log(tag, "onSubmit()", input)
+  },
+
+  onResetForm() {
+    // 검색 입력 내용이 삭제가 되었으므로, 검색 결과 화면 감추기 처리
+    console.log(tag, "onResetForm()")
+  }
 }

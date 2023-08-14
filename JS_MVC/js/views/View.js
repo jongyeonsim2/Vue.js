@@ -11,6 +11,8 @@ export default {
 
   // 화면의 해당 요소를 자기 자신의 속성으로 초기화
   init(el) {
+    //console.log(tag, "init()");
+
     if (!el) throw el
 
     this.el = el;
@@ -21,22 +23,27 @@ export default {
 
   // 이벤트 처리를 위한 Listener 추가
   on( event, handler ) {
-
+    this.el.addEventListener(event, handler);
+    return this;
   },
 
   // Controller 에서 요소에서 발생한 사용자 이벤트를 알 수 있도록 dispathch.
   dispatch(event, data) {
-
+    const evt = new CustomEvent(event, {detail: data});
+    this.el.dispatchEvent(evt);
+    return this;
   },
   
   // 요소 감추기
   hide() {
-
+    this.el.style.display = "none";
+    return this;
   },
 
   // 요소 보이기
   show() {
-
+    this.el.style.display = "";
+    return this;
   },
 
 }

@@ -62,8 +62,8 @@ KeywordView.bindClickEvent = function() {
 // 컨트롤러에게 알려줄 수 있도록 사용자 이벤드 생성 함수
 KeywordView.onClickKeyword = function (e) {
   // view.js 의 dispatch() 호출
-  const {keyword} = e.currentTarget.dataset
-  this.dispatch("@click", {keyword})
+  const keyword = e.currentTarget.dataset
+  this.dispatch("@click", keyword)
 }
 
 export default KeywordView

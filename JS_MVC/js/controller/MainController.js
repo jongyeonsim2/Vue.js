@@ -5,6 +5,8 @@ import ResultView from "../views/ResultView.js";
 
 import KeywordModel from "../models/keywordModel.js";
 import KeywordView from "../views/KeywordView.js";
+import HistoryModel from "../models/HistoryModel.js";
+import HistoryView from "../views/HistoryView.js";
 
 
 
@@ -37,13 +39,22 @@ export default {
        * TabView 의 화면 SetUp
        */
       TabView.setup(document.querySelector("#tabs"))
-
+        .on('@change', e => this.onChangeTab(e.detail.tabName))
 
       /***
        * KeywordView 의 화면 SetUp
        */
       KeywordView.setup(document.querySelector("#search-keyword"))
         .on("@click", e => this.onClickKeyword(e.detail.keyword))
+
+      /***
+       * HistoryView 의 화면 SetUp
+       */
+      HistoryView.setup(document.querySelector("#search-history"))
+        .on("@click", e => this.onClickHistory(e.detail.keyword))
+        .on("@remove",e => this.onRemoveHistory(e.detail.keyword))
+
+
 
       /***
        * ResultView 의 화면 SetUp
@@ -62,8 +73,11 @@ export default {
         console.log(tag, "추천 검색")
         this.fetchSearchKeyword()
         // "최근 검색"은 보이지 않게 처리
+        HistoryView.hide()
       } else {
         // "추천 검색"이 보이지 않게 처리
+        console.log(tag, "최근 검색")
+        this.fetchSearchHistory()
         KeywordView.hide()
       }
 
@@ -90,6 +104,11 @@ export default {
       ResultView.render(data)
     },
 
+    onChangeTab(tabName) {
+      this.selectedTab = tabName
+      this.renderView()
+    },
+
     onResetForm() {
       // 검색 입력 내용이 삭제가 되었으므로, 검색 결과 화면 감추기 처리
       console.log(tag, "onResetForm()")
@@ -108,7 +127,24 @@ export default {
           KeywordView.render(data)
         }
       )
+    },
 
-      
+    fetchSearchHistory() {
+      HistoryModel.list().then( data => {
+
+        console.log(tag, "fetchSearchHistory()", data)
+
+          const a = HistoryView.render(data)
+          a.bindRemoveBtn()
+        })
+    },
+
+    onClickHistory(keyword) {
+      this.search(keyword)
+    },
+
+    onRemoveHistory(keyword) {
+      HistoryModel.remove(keyword)
+      this.renderView()
     }
 }

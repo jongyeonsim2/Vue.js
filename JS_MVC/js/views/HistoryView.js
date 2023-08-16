@@ -41,7 +41,7 @@ HistoryView.getKeywordsHtml = function (data) {
 HistoryView.bindRemoveBtn = function () {
   Array.from(this.el.querySelectorAll("button.btn-remove"))
     .forEach( btn => {
-                        btn.addEvnetListener( "click", e => {
+                        btn.addEventListener( "click", e => {
                             e.stopPropagation() // 이벤트 전파 멈춤.
 
                             /***

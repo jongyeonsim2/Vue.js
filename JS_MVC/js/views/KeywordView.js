@@ -34,16 +34,14 @@ KeywordView.render = function (data = []) {
 
 // html작성 함수
 KeywordView.getKeywordsHtml = function (data) {
-  return
-    data.reduce((html, item, index) => {
-
-      // li data 작성
-      html += `<li data-keyword="${item.keyword}">
-                  <span class="number">${index + 1}</span>${item.keyword}
-               </li>`
-
-      return html
-    }, `<ul class="list">`) + "</ul>"
+  return data.reduce(
+          (html, item, index) => {
+              // li data 작성
+              html += `<li data-keyword="${item.keyword}">
+                         <span class="number">${index + 1}</span>${item.keyword}
+                      </li>`
+              return html
+        }, '<ul class="list">') + "</ul>"
 }
 
 
@@ -52,12 +50,11 @@ KeywordView.getKeywordsHtml = function (data) {
 KeywordView.bindClickEvent = function() {
   // 컨트롤러에게 알려줄 수 있도록 사용자 이벤드 생성 함수 호출
   Array.from(
-    this.el.querySelectorAll("li"))
-      .foreach(
-        li => {
-          li.addEventListener("click", e => this.onClickKeyword(e))
-        }
-      )
+    this.el.querySelectorAll('li'))
+      .forEach(li => {
+                        li.addEventListener('click', e => this.onClickKeyword(e))
+                }
+              )
 }
 
 

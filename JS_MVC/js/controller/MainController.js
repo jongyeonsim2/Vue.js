@@ -3,6 +3,11 @@ import FormView from "../views/FormView.js";
 import TabView from "../views/TabViews.js";
 import ResultView from "../views/ResultView.js";
 
+import KeywordModel from "../models/keywordModel.js";
+import KeywordView from "../views/KeywordView.js";
+
+
+
 // 디버깅용 태그
 const tag = "[MainController]";
 
@@ -33,6 +38,13 @@ export default {
        */
       TabView.setup(document.querySelector("#tabs"))
 
+
+      /***
+       * KeywordView 의 화면 SetUp
+       */
+      KeywordView.setup(document.querySelector("#search-keyword"))
+        .on("@click", e => this.onClickKeyword(e.detail.keyword))
+
       /***
        * ResultView 의 화면 SetUp
        */
@@ -45,14 +57,23 @@ export default {
     renderView() {
       TabView.setActiveTab(this.selectedTab)
 
+      if (this.selectedTab === "추천 검색") {
+        // 키워드 데이터 수신 처리 함수 호출
+        console.log(tag, "추천 검색")
+        this.fetchSearchKeyword()
+        // "최근 검색"은 보이지 않게 처리
+      } else {
+        // "추천 검색"이 보이지 않게 처리
+        KeywordView.hide()
+      }
+
       ResultView.hide()
     },
 
     search(input) {
       SearchModel.list(input).then(data => {
-        ResultView.render(data)
+        this.onSearchResult(data)
       })
-      TabView.hide()
     },
 
     onSubmit(input) {
@@ -60,9 +81,32 @@ export default {
       this.search(input)
     },
 
+    onSearchResult(data) {
+      TabView.hide()
+      KeywordView.hide()
+      //HistoryView.hide()
+      ResultView.render(data)
+    },
+
     onResetForm() {
       // 검색 입력 내용이 삭제가 되었으므로, 검색 결과 화면 감추기 처리
       console.log(tag, "onResetForm()")
       this.renderView()
+    },
+
+    onClickKeyword(keyword) {
+      this.search(keyword)
+    },
+
+    fetchSearchKeyword() {
+      // 데이터 수신 및 수신된 데이터로 화면 작성(html 작성)
+      KeywordModel.list().then(
+        data => {
+          console.log(tag, data)
+          KeywordView.render(data)
+        }
+      )
+
+      
     }
 }

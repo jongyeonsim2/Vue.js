@@ -122,5 +122,10 @@ FromView.onClickReset = function () {
   this.showResetBtn(false)
 }
 
+FromView.setValue = function (value = "") {
+  this.inputEl.value = value
+  this.showResetBtn(this.inputEl.value.length)
+}
+
 // 컨트롤러에서 사용하기 위해서 모듈을 내보내기 해야 함.
 export default FromView

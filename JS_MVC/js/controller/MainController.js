@@ -71,6 +71,8 @@ export default {
     },
 
     search(input) {
+      console.log(tag, "search()", input)
+      FormView.setValue(input)
       SearchModel.list(input).then(data => {
         this.onSearchResult(data)
       })
@@ -102,7 +104,7 @@ export default {
       // 데이터 수신 및 수신된 데이터로 화면 작성(html 작성)
       KeywordModel.list().then(
         data => {
-          console.log(tag, data)
+          //console.log(tag, data)
           KeywordView.render(data)
         }
       )

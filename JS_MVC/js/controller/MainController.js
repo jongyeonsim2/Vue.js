@@ -100,7 +100,7 @@ export default {
     onSearchResult(data) {
       TabView.hide()
       KeywordView.hide()
-      //HistoryView.hide()
+      HistoryView.hide()
       ResultView.render(data)
     },
 

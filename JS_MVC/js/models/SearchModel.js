@@ -3,14 +3,12 @@ const data = [
   {
     id: 1,
     name: "비건 샐러드",
-    image:
-      "../img/2.avif",
+    image: "./img/2.avif",
   },
   {
     id: 2,
     name: "수제 햄버거",
-    image:
-      "../img/1.avif",
+    image: "./img/1.avif",
   },
 ];
 

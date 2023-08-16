@@ -30,6 +30,9 @@ ResultView.getSearchResultsHtml = function (data) {
   // html : 누산이 완료된 최종 html 문서
   // item : 데이터 한 건
   return data.reduce( (html, item) => {
+
+      console.log(tag, "getSearchResultsHtml()" ,html);
+
       html += this.getSerarchItemHtml(item)
       return html
     }, "<ul>"

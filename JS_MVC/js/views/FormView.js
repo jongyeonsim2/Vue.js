@@ -103,6 +103,7 @@ FromView.onKeyup = function (e) {
   const enter = 13
 
   // 사용자 이벤트 생성을 의뢰
+  this.showResetBtn(this.inputEl.value.length)
   if (!this.inputEl.value.length) this.dispatch("@reset")
 
   if (e.keyCode !== enter) return;
@@ -117,7 +118,8 @@ FromView.onKeyup = function (e) {
  * 따라서, 사용자 이벤트를 만들어서 dispatch 를 해야 함.
  */
 FromView.onClickReset = function () {
-
+  this.dispatch("@reset")
+  this.showResetBtn(false)
 }
 
 // 컨트롤러에서 사용하기 위해서 모듈을 내보내기 해야 함.

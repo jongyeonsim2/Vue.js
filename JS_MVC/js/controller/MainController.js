@@ -45,12 +45,14 @@ export default {
     renderView() {
       TabView.setActiveTab(this.selectedTab)
 
+      ResultView.hide()
     },
 
     search(input) {
       SearchModel.list(input).then(data => {
         ResultView.render(data)
       })
+      TabView.hide()
     },
 
     onSubmit(input) {
@@ -61,5 +63,6 @@ export default {
     onResetForm() {
       // 검색 입력 내용이 삭제가 되었으므로, 검색 결과 화면 감추기 처리
       console.log(tag, "onResetForm()")
+      this.renderView()
     }
 }

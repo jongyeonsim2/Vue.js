@@ -27,6 +27,9 @@
 
       new Vue({
         el: '#app',
+        //created : 뷰 인스턴스가 생성되고, 실행되는 단계.
+        //          data 속성과 method 속성에 접근할 수 있는 단계.
+        //          데이터를 받아 오는 로직을 수행하기에 좋은 단계.
         created: function() {
           // 발생한 이벤트를 잡는 쪽
           eventBus.$on("trgEventBus", function(data) {

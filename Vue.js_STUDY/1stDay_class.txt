@@ -1,0 +1,41 @@
+1. Vue.js란?
+   웹 페이지 화면을 개발하기 위한 프런트엔드 프레임워크
+
+2. Vue.js 특징
+   - UI 화면 개발 방법 중 하나의 MVVM 패턴의 화면단의
+     라이브러리.
+   - 구조
+     view <-> Vue.js <-> Model <-> Back End
+     
+     view : html, DOM
+     Vue.js : DOM Listener, Data Binding
+     Model : javaScript Object( 서버에서 가져온 데이터 )
+   - 각 요소에 대한 상세한 설명
+     뷰(View) : 사용자에게 보이는 화면
+     DOM : html 문서에 들어가는 요소의 정보를 가지고 있는 데이터 트리
+     DOM Listener 
+         DOM 의 변경 내역에 대해서 즉각적으로 반응하여
+         특정 로직을 수행하는 장치
+     Data Binding
+         뷰(View)에 표시되는 내용과 모델의 데이터를 동기화
+     모델(Model)
+         서버에서 가져온 데이터를 자바스크립트 객체 형태로 저장
+     뷰 모델(Vue.js)
+         뷰와 모델의 중간 영역. 돔리스너와 데이터 바인딩을 제공하는 영역   
+   - 컴포넌트 기반 프레임워크
+     컴포넌트 : 목적별, 기능별로 구분해서 개발하는 단위.
+               html tree(DOM) => 부모 자식 관계의 구조
+                   부모(상위 컴포넌트), 자식(하위 컴포넌트)
+
+     html 구조화 : Header, Content( Aside, List ), Footer
+
+3. Vue.js 환경 설정
+   - Node.js
+     node -v 입력해서 설치 확인
+     
+   - 크롬 브라우저
+     vue.js devtools
+
+   - VS code
+     Vue 3 Snippets
+     Volar

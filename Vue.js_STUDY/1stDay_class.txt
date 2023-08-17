@@ -32,10 +32,19 @@
 3. Vue.js 환경 설정
    - Node.js
      node -v 입력해서 설치 확인
-     
+
    - 크롬 브라우저
      vue.js devtools
 
    - VS code
      Vue 3 Snippets
      Volar
+
+   - toDo project 실행해보려고 함.
+     npm install vue-cli -global
+
+     vue
+
+     npm install
+
+     npm run dev

@@ -9,8 +9,8 @@
   <div id="app">
     <!-- 하위 컴포넌트 : 각각 상위 컴포넌트와 통신이 되도록 설정 -->
     <!-- v-bind : props 속성 = "상위 컴포넌트의 데이터 속성" -->
-    <child-component1></child-component1>
-    <chile-component2></chile-component2>
+    <child-component1 v-bind:propsdata="message1"></child-component1>
+    <child-component2 v-bind:propsdata="message2"></child-component2>
   </div>
 
   <script src="js/vender/vue.js"></script>

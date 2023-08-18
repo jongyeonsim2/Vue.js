@@ -6,8 +6,44 @@
   <title>Vue Router Sample1</title>
 </head>
 <body>
-
+  <div id="app">
+    <h1>뷰 라우터 예제1</h1>
+    <p>
+      <!-- router link 작성, 컴포넌트 2개의 url 설정 -->
+      <router-link to="/main">Main 컴포넌트로 이동</router-link>
+      <router-link to="/login"> Login 컴포넌트로 이동</router-link>
+    </p>
+    <!-- router view 작성, 기존의 컴포넌트 태그 대신에 사용. -->
+    <!-- 라우팅 된 컴포넌트가 표시됨. -->
+    <router-view></router-view>
+  </div>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+
+  <!-- Vue Router 라이브러리 -->
   <script src="https://unpkg.com/vue-router@3.0.1/dist/vue-router.js"></script>
+  <script>
+    // 컴포넌트 2개를 정의 => 화면에 표시되는 HTML 요소
+    let Main = { template: '<div>main</div>' };
+    let Login = { template: '<div>login</div>' };
+
+    // 각 컴포넌트와 요청 url 을 설정
+    // 각 URL에 대해서 표시할 컴포넌트를 설정함.
+    let routes = [
+      {path: '/main', component: Main},
+      {path: '/login', component: Login}
+    ];
+
+    // VueRouter 생성 => 위에서 설정한 컴포넌트와 url 정보를 바탕으로
+    let router = new VueRouter({
+      routes
+    });
+
+    // Vue 객체에 VueRouter 를 등록
+    // $mount() : el 속성과 동일. 인스턴스를 화면의 요소에 붙이는 역할을 함.
+    let app = new Vue({
+      router
+    }).$mount("#app");
+
+  </script>
 </body>
 </html>

@@ -48,6 +48,41 @@
           });
 
 3. 뷰 템플릿
+   3.1 유형
+      - 데이터 바인딩 : {{  }}
+      - 자바스크립트 표현식
+      - 디렉티브 : v-bind, v-on 등
+      - 이벤트 처리
+      - 기타
 
+   3.2 데이터 바인딩
+       - HTML 화면 요소를 뷰 인스턴스의 데이터와 연결하는 것.
+       - 문법 : {{ }}, v-bind
 
+       - {{ }}, 콧수염 괄호
+         뷰 인스턴스의 데이터를 HTML 태그에 연결하는 가장 기본적인
+         텍스트 삽입 방식임.
 
+         data 의 속성의 message 값이 바뀌면 뷰 반응성에 의해서
+         화면이 자동으로 갱신됨.
+
+         <div id="app">
+            {{ message }}
+         </div>
+
+         <script>
+            new Vue({
+              el: "#app",
+              data: {
+                message: "Hello Vue.js!~"
+              }
+            });
+         </script>
+
+         message 값이 변경되더라도 바꾸고 싶지 않은 경우, v-once 를 지정.
+
+         <div id="app" v-once>
+            {{ message }}
+         </div>
+   
+       - v-bind

@@ -32,3 +32,22 @@
    2.1 뷰에서의 통신 유형
        - 뷰 리소스
        - 엑시오스(axios)
+         가장 많이 사용되는 HTTP 통신 라이브러리임.
+
+         GET 방식
+          axios.get(URL 주소).then().catch()
+
+         POST 방식
+          axios.post(URL 주소).then().catch()
+
+         HTTP 옵션 설정 
+          axios({
+            method: 'get',
+            url: URL 주소,
+            .......
+          });
+
+3. 뷰 템플릿
+
+
+

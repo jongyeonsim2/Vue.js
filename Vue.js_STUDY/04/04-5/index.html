@@ -23,10 +23,18 @@ https://raw.githubusercontent.com/joshua1988/doit-vuejs/master/data/demo.json
   <script>
     new Vue({
       el: '#app', //$mount() 와 동일한 방법
-      method: {   //v-on:click 에 대한 처리할 함수를 작성.
+      methods: {   //v-on:click 에 대한 처리할 함수를 작성.
         getData: function() {
           //통신 요청
           //요청 응답 결과 처리
+          this.$http.get(`https://raw.githubusercontent.com/joshua1988/doit-vuejs/master/data/demo.json`) //get방식을 이용한 request 요청.
+            .then( function(response) {
+              console.log(response);
+              console.log(
+                // JSON 문자열을 자바스크립트 객체로 변환.
+                JSON.parse(response.data)
+              );
+            } ) 
         }
       }
     });

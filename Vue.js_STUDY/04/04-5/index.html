@@ -11,7 +11,25 @@
 https://raw.githubusercontent.com/joshua1988/doit-vuejs/master/data/demo.json
 
   -->
+
+  <div id="app">
+    <!-- click 이벤트가 발생하면, getData() 함수를 실행 -->
+    <button v-on:click="getData">프레임워크 리스트 요청</button>
+  </div>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+  
+  <!-- 뷰 리소스 라이브러리 -->
   <script src="https://cdn.jsdelivr.net/npm/vue-resource@1.3.4"></script>
+  <script>
+    new Vue({
+      el: '#app', //$mount() 와 동일한 방법
+      method: {   //v-on:click 에 대한 처리할 함수를 작성.
+        getData: function() {
+          //통신 요청
+          //요청 응답 결과 처리
+        }
+      }
+    });
+  </script>
 </body>
 </html>

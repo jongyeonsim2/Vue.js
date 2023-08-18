@@ -8,6 +8,8 @@
 <body>
   <div id="app">
     <button v-on:click="clcikBtn">클릭</button>
+    <button v-on:click="clcikBtn2(10)">클릭(매개변수 전달)</button>
+    <button v-on:click="clcikBtn3">클릭(매개변수 이벤트 전달)</button>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
   <script>
@@ -16,6 +18,12 @@
       methods: {
         clcikBtn: function() {
           alert('clicked');
+        },
+        clcikBtn2: function(num) {
+          alert('clicked ' + num );
+        },
+        clcikBtn3: function(event) {
+          console.log(event);
         }
       }
     });

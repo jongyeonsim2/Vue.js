@@ -7,14 +7,17 @@
 </head>
 <body>
   <div id="app">
-    <a v-if="flag">Vue.js</a>
-    
-    <ul>
-      <li v-for="system in systems">{{system}}/li>
-    </ul>
-
+    <p v-if="flag">Vue.js</p>
     <p v-show="flag">Vue.js</p>
+ 
+    <ul>
+      <li v-for="system in systems">{{system}}</li>
+    </ul>
+    
     <h5 v-bind:id="uid"></h5>
+
+    <input type="text" v-model="userName"> {{ userName }}
+
     <button v-on:click="popupAlert">경고 창 버튼</button>
   </div>
 
@@ -25,7 +28,8 @@
       data: {
         flag: false,
         systems: ['android','ios','windows'],
-        uid: 10
+        uid: 10,
+        userName: '홍길동'
       },
       methods: {
         popupAlert: function() {

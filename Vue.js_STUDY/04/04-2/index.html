@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vue Nested Router</title>
+</head>
+<body>
+
+  <!-- 
+    Nested Router :
+    상위 하위 컴포넌트 구조로 2 개 이상의 컴포넌트로 화면에 표시 -->
+
+  <div id="app">
+    <router-view></router-view>
+  </div>
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+  <script src="https://unpkg.com/vue-router@3.0.1/dist/vue-router.js"></script>
+  <script>
+    // 컴포넌트 작성 => 상위, 하위 구조가 되도록 작성 => Nested Router
+    // 상위 컴포넌트
+    let User = {
+      template : 
+        `<div>
+          User Component
+          <router-view></router-view>
+         </div>
+        `
+    };
+
+    // 하위 컴포넌트 2 개 작성
+    let UserProfile1 = { template: '<p>User Profile Component 1</p>' };
+    let UserProfile2 = { template: '<p>User Profile Component 2</p>' };
+
+    // 각 컴포넌트별 url 설정
+    let routes = [
+      {
+        path: '/user',
+        component: User,
+        children: [
+          {
+            path: 'userProfile1',
+            component: UserProfile1
+          },
+          {
+            path: 'userProfile2',
+            component: UserProfile2
+          }
+        ]
+      }
+    ];
+
+    // VueRouter 생성
+    let router = new VueRouter({
+      routes
+    });
+
+    // Vue 생성
+    var app = new Vue({router}).$mount('#app');
+
+  </script>
+</body>
+</html>

@@ -6,7 +6,12 @@
   <title>Document</title>
 </head>
 <body>
-  
+  <div id="app"> <!-- Vue 객체( VueRouter 가진 상태에서 )와 연결 -->
+    <router-view name="header"></router-view>
+    <router-view></router-view> <!-- VueRouter에서 default 처리 -->
+    <router-view name="footer"></router-view>
+  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
 
   <!-- Vue Router 라이브러리 -->
@@ -29,19 +34,24 @@
         {
           path: '/', //화면 1에 대한 요청 경로
           components: {
-
+            default: Body,
+            header: Header,
+            footer: Footer
           }
 
         }, //화면 1번에 대한 설정
         {
           path: '/login', //화면 2에 대한 요청 경로
           components: {
-            
+            default: LoginBody,
+            header: LoginHeader,
+            footer: LoginFooter
           }
         }  //화면 2번에 대한 설정
       ]
     });
 
+    let app = new Vue({router}).$mount('#app');
   </script>
 </body>
 </html>

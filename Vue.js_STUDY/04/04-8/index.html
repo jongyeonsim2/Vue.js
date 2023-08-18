@@ -7,9 +7,16 @@
 </head>
 <body>
   <div id="app">
+    <!-- 주의 사항  -->
+    <!--<p>{{ let a = 10; }}</p> 선언문 사용 불가 -->
+    <!--<p>{{ if(true) { return 10 } }}</p> 분기문 사용 불가 -->
+    <p>{{ true ? 10 : 0 }}</p>
+    <p>{{ reverseMessage }}</p> <!-- Vue 객체에 함수로 구현 -->
+
+
     <p>{{ message }}</p>
     <p>{{ message + "!!!" }}</p>
-    <p>{{ message.split('').reverse().join() }}</p>
+    <p>{{ message.split('').reverse().join('') }}</p>
     <!-- 
       split() : 구분자를 기준으로 문자열을 쪼갬.
                 "abc" -> split() -> ["a","b","c"]
@@ -23,6 +30,11 @@
       el: "#app",
       data: {
         message: 'Hello Vue.js!'
+      },
+      computed: {
+        reverseMessage: function() {
+          return this.message.split('').reverse().join('');
+        }
       }
     });
   </script>

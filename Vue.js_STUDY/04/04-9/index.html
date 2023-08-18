@@ -3,9 +3,36 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Document</title>
+  <title>Vue Template - Directive</title>
 </head>
 <body>
+  <div id="app">
+    <a v-if="flag">Vue.js</a>
+    
+    <ul>
+      <li v-for="system in systems">{{system}}/li>
+    </ul>
+
+    <p v-show="flag">Vue.js</p>
+    <h5 v-bind:id="uid"></h5>
+    <button v-on:click="popupAlert">경고 창 버튼</button>
+  </div>
+
   <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+  <script>
+    new Vue({
+      el: '#app',
+      data: {
+        flag: false,
+        systems: ['android','ios','windows'],
+        uid: 10
+      },
+      methods: {
+        popupAlert: function() {
+          return alert('경고 창 표시');
+        }
+      }
+    });
+  </script>
 </body>
 </html>

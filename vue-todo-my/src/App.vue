@@ -16,6 +16,37 @@ import TodoList from './components/TodoList.vue';
 import TodoFooter from './components/TodoFooter.vue';
 
 export default {
+  data() {
+    return {
+      todoItems: []
+    }
+  },
+  methods: {
+    // 데이터 처리는 localStorage, todoItems 가 대상이 됨.
+    // 3가지의 케이스가 존재함으로, 하위 모듈에서 발생시킨 이벤트를
+    // vue 모듈에서 확인을 할 수 있으면, 케이스별 처리가 가능함.
+
+    // 하위 모듈에서 호출한 $emit()에서 발생한 이벤트를
+    // vue 모듈에서 받아서 처리하면 됨.
+
+    // 컴포넌트 태그에서 하위 모듈에서 발생한 이벤트를 v-on을 이용해서
+    // 잡고, 잡히면, 내부 함수를 호출해서 실행시키면 됨.
+
+
+    // 신규 추가되는 경우
+
+    // 한 건 삭제되는 경우
+
+    // 전체 삭제되는 경우
+  },
+  created() {
+    // 로컬 저장소에 데이터가 있는지 체크
+    if (localStorage.length > 0) {
+      for (let i = 0; i < localStorage.length; i++) {
+        this.todoItems.push(localStorage.key(i));
+      }
+    }
+  },
   components: {
     // 컴포넌트 태그와 실제 모듈의 관계를 설정.
     'TodoHeader': TodoHeader,

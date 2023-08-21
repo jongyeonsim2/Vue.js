@@ -32,6 +32,11 @@ export default {
         localStorage.setItem(this.newTodoItem, this.newTodoItem);
 
         // 여기까지는 데이터 저장
+        // 여기까지 진행이 되면, vue 상위 모듈에게 신규 데이터가 등록되었음을 알려야 함.
+
+        // 매개변수 1 : 상위 모듈에게 알려주 이벤트명
+        // 매개변수 2 : 상위 모듈이 처리해야 할 데이터. 저장을 상위 모듈에게 위임함.
+        this.$emit('addTodo', value);
 
         // 단일 책임 원칙을 적용해서, 화면적인 요소는 분리.
         this.clearInput();

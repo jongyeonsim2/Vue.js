@@ -1,5 +1,7 @@
 <template>
-  <div>footer</div>
+  <div class="clearAllContainer">
+    <span class="clearAllBtn">Clear All</span>
+  </div>
 </template>
 
 <script></script>

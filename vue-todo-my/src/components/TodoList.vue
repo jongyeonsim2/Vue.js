@@ -1,7 +1,15 @@
 <template>
   <section>
     <ul>
-      <li v-for="todoItem in todoItems">{{ todoItem }}</li>
+      <li v-for="(todoItem, index) in todoItems" :key="todoItem">
+        <!-- 체크 아이콘 -->
+        <i class="checkBtn fas fa-check" aria-hidden="true"></i>
+        {{ todoItem }}
+        <span class="removeBtn" type="button" v-on:click="removeTodo(todoItem, index)">
+          <!-- 삭제 아이콘 -->
+          <i class="far fa-trash-alt" aria-hidden="true"></i>
+        </span>
+      </li>
     </ul>
   </section>
 </template>
@@ -21,6 +29,12 @@ export default {
       for (let i = 0; i < localStorage.length; i++) {
         this.todoItems.push(localStorage.key(i));
       }
+    }
+  },
+  methods: {
+    removeTodo(todoItem, index) {
+      // 이벤트 발생 확인
+      console.log('clicked', todoItem, index);
     }
   }
 }

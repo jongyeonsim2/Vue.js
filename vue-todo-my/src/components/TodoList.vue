@@ -34,7 +34,13 @@ export default {
   methods: {
     removeTodo(todoItem, index) {
       // 이벤트 발생 확인
-      console.log('clicked', todoItem, index);
+      //console.log('clicked', todoItem, index);
+
+      // 브라우저의 localStroage 에서 해당 데이터 삭제
+      localStorage.removeItem(todoItem);
+
+      // 배열(todoItems)에 해당 데이터 삭제
+      this.todoItems.splice(index, 1);
     }
   }
 }

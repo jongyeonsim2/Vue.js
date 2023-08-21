@@ -4,7 +4,7 @@
     <TodoHeader></TodoHeader>
     <TodoInput v-on:addTodo="addTodo"></TodoInput>
     <TodoList v-bind:propsdata='todoItems' v-on:removeTodo="removeTodo"></TodoList>
-    <TodoFooter></TodoFooter>
+    <TodoFooter v-on:removeAll="clearAll"></TodoFooter>
   </div>
 </template>
 
@@ -38,17 +38,20 @@ export default {
     // 해당 하위 모듈의 컴포넌트 태그에 v-bind:propsdata='todoItems' 작성함.
 
 
-    // 신규 추가되는 경우
+    // 신규 추가되는 경우( 하위 : TodoInput.vue )
     addTodo(todoItem) {
       console.log('addTodo()', 'clicked', todoItem);
     },
 
-    // 한 건 삭제되는 경우
+    // 한 건 삭제되는 경우( 하위 : TodoList.vue )
     removeTodo(todoItem, index) {
       console.log('removeTodo()', 'clicked', todoItem, index);
-    }
+    },
 
-    // 전체 삭제되는 경우
+    // 전체 삭제되는 경우( 하위 : TodoFooter.vue )
+    clearAll() {
+      console.log('claerAll()', 'clicked');
+    }
   },
   created() {
     // 로컬 저장소에 데이터가 있는지 체크

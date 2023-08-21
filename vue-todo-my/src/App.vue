@@ -40,17 +40,23 @@ export default {
 
     // 신규 추가되는 경우( 하위 : TodoInput.vue )
     addTodo(todoItem) {
-      console.log('addTodo()', 'clicked', todoItem);
+      //console.log('addTodo()', 'clicked', todoItem);
+      localStorage.setItem(todoItem, todoItem);
+      this.todoItems.push(todoItem);
     },
 
     // 한 건 삭제되는 경우( 하위 : TodoList.vue )
     removeTodo(todoItem, index) {
-      console.log('removeTodo()', 'clicked', todoItem, index);
+      //console.log('removeTodo()', 'clicked', todoItem, index);
+      localStorage.removeItem(todoItem);
+      this.todoItems.splice(index, 1);
     },
 
     // 전체 삭제되는 경우( 하위 : TodoFooter.vue )
     clearAll() {
-      console.log('claerAll()', 'clicked');
+      //console.log('claerAll()', 'clicked');
+      localStorage.clear();
+      this.todoItems = [];
     }
   },
   created() {

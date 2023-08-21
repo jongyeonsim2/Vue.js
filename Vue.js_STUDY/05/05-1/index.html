@@ -1,0 +1,37 @@
+<html>
+  <head>
+    <title>Vue Template - Computed 속성 vs Methods 속성</title>
+  </head>
+  <body>
+    <div id="app">
+      <p>{{ message }}</p>
+      <hr>
+      method 속성 : &nbsp;&nbsp;
+      <button v-on:click="reverseMsg_method">문자열 역순</button>
+      <hr>
+      computed 속성 : &nbsp;&nbsp;
+      <input type="text" v-model="message"> {{ reverseMsg_computed }}
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.5.2/dist/vue.js"></script>
+    <script>
+      new Vue({
+        el: '#app',
+        data: {
+          message: 'Hello Vue.js!'
+        },
+        methods: {
+          reverseMsg_method: function() {
+            this.message = this.message.split('').reverse().join('');
+            return this.message;
+          }
+        },
+        computed: {
+          reverseMsg_computed: function() {
+            return this.message.split('').reverse().join('');
+          }
+        }
+      });
+    </script>
+  </body>
+</html>

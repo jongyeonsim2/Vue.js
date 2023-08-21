@@ -1,7 +1,7 @@
 <template>
   <section>
     <ul>
-      <li v-for="(todoItem, index) in todoItems" :key="todoItem">
+      <li v-for="(todoItem, index) in propsdata" :key="todoItem">
         <!-- 체크 아이콘 -->
         <i class="checkBtn fas fa-check" aria-hidden="true"></i>
         {{ todoItem }}
@@ -16,34 +16,46 @@
 
 <script>
 export default {
-  data() {
-    return {
-      // 컴포넌트에서 사용할 배열 선언.
-      // 저장소에 있는 todo list 데이터의 저장 용도.
-      todoItems: []
-    }
-  },
-  created() {
-    // 로컬 저장소에 데이터가 있는지 체크
-    if (localStorage.length > 0) {
-      for (let i = 0; i < localStorage.length; i++) {
-        this.todoItems.push(localStorage.key(i));
-      }
-    }
-  },
+  // 상위 모듈인 app.vue 에서 관리하고 있는 배열 데이터를 하위 모듈로 전달.
+  props: ['propsdata'],
   methods: {
     removeTodo(todoItem, index) {
-      // 이벤트 발생 확인
-      //console.log('clicked', todoItem, index);
-
-      // 브라우저의 localStroage 에서 해당 데이터 삭제
-      localStorage.removeItem(todoItem);
-
-      // 배열(todoItems)에 해당 데이터 삭제
-      this.todoItems.splice(index, 1);
+      // 한 건의 데이터가 삭제되었다는 것을 상위 모듈인 app.vue 에게 알려야 함.
+      this.$emit('removeTodo', todoItem, index);
     }
   }
 }
+
+
+// export default {
+//   data() {
+//     return {
+//       // 컴포넌트에서 사용할 배열 선언.
+//       // 저장소에 있는 todo list 데이터의 저장 용도.
+//       todoItems: []
+//     }
+//   },
+//   created() {
+//     // 로컬 저장소에 데이터가 있는지 체크
+//     if (localStorage.length > 0) {
+//       for (let i = 0; i < localStorage.length; i++) {
+//         this.todoItems.push(localStorage.key(i));
+//       }
+//     }
+//   },
+//   methods: {
+//     removeTodo(todoItem, index) {
+//       // 이벤트 발생 확인
+//       //console.log('clicked', todoItem, index);
+
+//       // 브라우저의 localStroage 에서 해당 데이터 삭제
+//       localStorage.removeItem(todoItem);
+
+//       // 배열(todoItems)에 해당 데이터 삭제
+//       this.todoItems.splice(index, 1);
+//     }
+//   }
+// }
 </script>
 
 <style scoped>

@@ -2,8 +2,8 @@
   <div id="app">
     <!-- 컴포넌트 태그 4가지를 작성 -->
     <TodoHeader></TodoHeader>
-    <TodoInput></TodoInput>
-    <TodoList></TodoList>
+    <TodoInput v-on:addTodo="addTodo"></TodoInput>
+    <TodoList v-bind:propsdata='todoItems' v-on:removeTodo="removeTodo"></TodoList>
     <TodoFooter></TodoFooter>
   </div>
 </template>
@@ -22,6 +22,7 @@ export default {
     }
   },
   methods: {
+    //****************** 데이터 저장 및 삭제  ****************** */
     // 데이터 처리는 localStorage, todoItems 가 대상이 됨.
     // 3가지의 케이스가 존재함으로, 하위 모듈에서 발생시킨 이벤트를
     // vue 모듈에서 확인을 할 수 있으면, 케이스별 처리가 가능함.
@@ -33,9 +34,19 @@ export default {
     // 잡고, 잡히면, 내부 함수를 호출해서 실행시키면 됨.
 
 
+    //****************** 배열 데이터를 하위 모듈에 전달  ****************** */
+    // 해당 하위 모듈의 컴포넌트 태그에 v-bind:propsdata='todoItems' 작성함.
+
+
     // 신규 추가되는 경우
+    addTodo(todoItem) {
+      console.log('addTodo()', 'clicked', todoItem);
+    },
 
     // 한 건 삭제되는 경우
+    removeTodo(todoItem, index) {
+      console.log('removeTodo()', 'clicked', todoItem, index);
+    }
 
     // 전체 삭제되는 경우
   },

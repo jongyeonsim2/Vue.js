@@ -3,6 +3,12 @@
     <input type="text" v-model="newTodoItem" placeholder="할 일을 입력해주세요."
      v-on:keyup.enter="addTodo">
     <span class="addContainer" v-on:click="addTodo">
+      <!-- 웹 접근성 
+           스크린 리더 : 컴퓨터의 화면을 다양한 언어의 음성을 표현하는 것.
+                        텍스트를 읽어주는 기계.
+
+            aria-hidden="true" => 접근성 API에 노출. 스크린 리더가 음성으로 표현.
+      -->
       <i class="addBtn fas fa-plus fa-fade" aria-hidden="true"></i>
     </span>
   </div>

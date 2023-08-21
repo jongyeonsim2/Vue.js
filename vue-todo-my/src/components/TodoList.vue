@@ -1,8 +1,30 @@
 <template>
-  <div>list</div>
+  <section>
+    <ul>
+      <li v-for="todoItem in todoItems">{{ todoItem }}</li>
+    </ul>
+  </section>
 </template>
 
-<script></script>
+<script>
+export default {
+  data() {
+    return {
+      // 컴포넌트에서 사용할 배열 선언.
+      // 저장소에 있는 todo list 데이터의 저장 용도.
+      todoItems: []
+    }
+  },
+  created() {
+    // 로컬 저장소에 데이터가 있는지 체크
+    if (localStorage.length > 0) {
+      for (let i = 0; i < localStorage.length; i++) {
+        this.todoItems.push(localStorage.key(i));
+      }
+    }
+  }
+}
+</script>
 
 <style scoped>
 ul {
